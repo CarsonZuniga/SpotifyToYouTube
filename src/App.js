@@ -174,7 +174,7 @@ class App extends React.Component {
                                 </Col>
                                 <Col md={8}>
                                     <Row><p className="song-title">"{song.name}" by {song.artists[0].name}</p></Row>
-                                    <Row><a href={`https://www.youtube.com/results?search_query=${song.name}+${song.artists[0].name}`} target="_blank">Search on YouTube</a></Row>
+                                    <Row><a href={`https://www.youtube.com/results?search_query=${song.name.trim().replaceAll(' ', '+')}+${song.artists[0].name.trim().replaceAll(' ', '+')}`} target="_blank">Search on YouTube</a></Row>
                                 </Col>
                             </Row>
                         </Container>

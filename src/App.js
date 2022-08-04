@@ -83,15 +83,27 @@ class App extends React.Component {
     getPlaylists = async(event) => {
         event.preventDefault()
         try {
-            const {data} = await axios.get(`${SPOTIFY_API_ENDPOINT}/me/playlists`, {
-                headers: {
-                    Authorization: `Bearer ${this.state.spotifytoken}`
-                },
-                params: {
-                    'limit': 50
+            var new_playlists = [];
+            let i = 0;
+            this.setState({playlists: []})
+            while(true) {
+                let {data} = await axios.get(`${SPOTIFY_API_ENDPOINT}/me/playlists`, {
+                    headers: {
+                        Authorization: `Bearer ${this.state.spotifytoken}`
+                    },
+                    params: {
+                        'limit': 50,
+                        'offset': 50 * i
+                    }
+                })
+                if(data.items.length === 0)
+                    break;
+                for(var j = 0; j < data.items.length; j++) {
+                    new_playlists.push(data.items[j]);
                 }
-            })    
-            this.setState({playlists: data.items});
+                i += 1;
+            }
+            this.setState({playlists: new_playlists});
         } catch(error) {
             alert('Could not get your playlists');
         }

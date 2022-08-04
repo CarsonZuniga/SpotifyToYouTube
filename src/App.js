@@ -101,13 +101,10 @@ class App extends React.Component {
     render() {
         const renderSpotifyLoginButton = () => {
             if(this.state.spotifytoken) {
-                return (<Button onClick={this.spotifyLogout} className="spotify-button">Logout of Spotify</Button>);
+                return (<Button className="spotify-button" onClick={this.spotifyLogout}>Logout of Spotify</Button>);
             }
             else {
-                return (<a href={`${SPOTIFY_AUTH_ENDPOINT}?client_id=${SPOTIFY_CLIENT_ID}&redirect_uri=${SPOTIFY_REDIRECT_URI}&response_type=${SPOTIFY_RESPONSE_TYPE}&scope=${SPOTIFY_PLAYLIST_SCOPE}`}>
-                            <Button className="spotify-button">Login to Spotify</Button>
-                        </a>
-                        );
+                return (<Button className="spotify-button" onClick={() => window.location.href=`${SPOTIFY_AUTH_ENDPOINT}?client_id=${SPOTIFY_CLIENT_ID}&redirect_uri=${SPOTIFY_REDIRECT_URI}&response_type=${SPOTIFY_RESPONSE_TYPE}&scope=${SPOTIFY_PLAYLIST_SCOPE}`}>Login to Spotify</Button>);
             }
         }
         const renderGetPlaylistsButton = () => {

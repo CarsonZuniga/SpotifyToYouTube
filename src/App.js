@@ -108,7 +108,12 @@ class App extends React.Component {
             }
         }
         const renderGetPlaylistsButton = () => {
-            return (<Button onClick={this.getPlaylists} className="spotify-button">Get All Playlists</Button>);
+            if(this.state.spotifytoken) {
+                return (<Button onClick={this.getPlaylists} className="spotify-button">Get All Playlists</Button>);
+            }
+            else {
+                return null;
+            }
         }
         const renderPlaylists = () => {
             if(this.state.playlists.length && this.state.spotifytoken) {

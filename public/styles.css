@@ -1,0 +1,49 @@
+html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    background-color: rgba(76,76,76,1) !important;
+}
+
+.App {
+    margin: 10px 10px !important;
+    background-color: rgba(76,76,76,1) !important;
+    color: white
+}
+
+#song-list {
+    padding: 0;
+}
+
+.songContainer {
+    margin: 20px 0px !important;
+}
+
+.songContainer.col {
+    text-align: center !important;
+}
+
+.song-title {
+    margin: 0 !important;
+}
+
+.btn {
+    margin: 10px 0px !important;
+}
+
+.form-control {
+    width: 45% !important;
+}
+
+#search-bar {
+    padding: 20px 0px;
+}
+
+.spotify-button {
+    background-color: rgb(29, 185, 84) !important;
+    border: none !important;
+}
+
+.youtube-button {
+    background-color: red !important;
+    border: none !important;
+}

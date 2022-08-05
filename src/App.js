@@ -77,6 +77,7 @@ class App extends React.Component {
             this.setState({playlistSongs: new_playlist_songs})
         } catch(error) {
             alert(`Could not get playlist with ID ${this.state.searchKey}`)
+            this.spotifyLogout();
         }
     }
 
@@ -106,6 +107,7 @@ class App extends React.Component {
             this.setState({playlists: new_playlists});
         } catch(error) {
             alert('Could not get your playlists');
+            this.spotifyLogout();
         }
     }
 

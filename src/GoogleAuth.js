@@ -43,7 +43,6 @@ class GoogleAuth extends React.Component {
     onAuthChange() {
         this.setState({isSignedIn: this.auth.isSignedIn.get()});
         this.setState({accessToken: this.auth.currentUser.get().getAuthResponse().access_token});
-        console.log(this.state.accessToken)
     }
 
     onSignInClick() {
@@ -73,6 +72,7 @@ class GoogleAuth extends React.Component {
             });
             this.setState({playlistID: response.result.id})
         } catch(error) {
+            this.onSignOutClick();
             console.log('Error creating playlist');
         }
     }
@@ -152,8 +152,10 @@ class GoogleAuth extends React.Component {
                 let video_id = await this.getVideoID(`${song.name} ${song.artists[0].name}`);
                 if(video_id) {
                     let added = await this.addToPlaylist(video_id);
+                    console.log(`added ${song.name} to playlist`)
                     if(!added) {
-                        this.deletePlaylist();
+                        console.log(`error adding ${song.name} to playlist`)
+                        // this.deletePlaylist();
                         break;
                     }
                 }
